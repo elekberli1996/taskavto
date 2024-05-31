@@ -2,6 +2,25 @@
 
 {% block body %}
 
+{% if messages %}
+
+{% for message in messages %}
+
+{% if message.tags == "warning" %}
+<div id="message" class="alert_warning">
+   <span>   {{message}} </span>
+</div>
+{% else %}
+<div id="message" class="alert_success">
+   <span>{{message}}</span> 
+</div>
+{% endif %}
+    
+{% endfor %}
+    
+{% endif %}
+
+
    <h1>Arabalar</h1>
    {% for car in cars %}
     <div>

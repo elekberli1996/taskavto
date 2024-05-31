@@ -1,0 +1,18 @@
+
+{% extends 'base.html' %}
+
+{% block body %}
+    <h1 style="text-align: center;">login </h1>
+    <form method="post">
+        {%  csrf_token %}
+        <div class="form_group">
+            <label for="{{form.username.id_for_label}}">istifadeci adi</label>
+            {{form.username}}
+        </div>
+        <div class="form_group">
+            <label for="{{form.password.id_for_label}}">password</label>
+            {{form.password}}
+        </div>
+        <button class="btn">ok</button>
+    </form>
+{% endblock %}

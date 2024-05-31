@@ -4,12 +4,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+    <link rel="stylesheet" href="{% static 'style1.css' %}">
     <title>Document</title>
 </head>
 <body>
-    {% block body %}
+    
+         <div class="navbar">
+       
+        <div class="navbar_logo">
+            <img src="{% static '1.png '%}" alt="photo">
+        </div>
+        <div class="nav_links">
+            <ul>
+                <li><a href="{% url 'home' %}">Cars</a></li>
+                <li><a href="{% url 'about' %}">About</a></li>
+                <li><a href="{% url 'contact'  %}">Contact</a></li>
+                {% if request.user.is_authenticated %}
+                <li><a href="{% url 'mycar' %}">My Cars</a></li>
+                <li><a href="{% url 'account:logout' %}">Logout</a></li>
+                {%else%}
+                   <li><a href="{% url 'account:register' %}">Register</a></li>
+                <li><a href="{% url 'account:login' %}">Login</a></li>   
+                {% endif %}
+              
+               
+            </ul>
+        </div>
+      
+    </div>
+   <div class="container">
+     {% block body %}
         
     {% endblock %}
+   </div>
+   <script src="{% static 'app.js' %}"></script>
 </body>
 </html>

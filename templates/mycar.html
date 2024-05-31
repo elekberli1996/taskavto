@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+
+
+<h1>Menim masinlarim</h1>
+{% for car in cars %}
+ <div>
+
+     <h3>{{car.marka}}</h3>
+     <h4>{{car.model}}</h4>
+     <p>{{car.description}}</p>
+ </div>
+{% endfor %}
+    
+{% endblock %}
