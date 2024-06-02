@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+   <h1>Add car</h1> 
+    <form method="post">
+        {% csrf_token %}
+      
+        <div class="form_group">
+            <label for="{{form.marka.id_for_label}}">Marka adi</label>
+            {{form.marka}}
+        </div>
+        <div class="form_group">
+            <label for="{{form.model.id_for_label}}">Model adi</label>
+            {{form.model}}
+        </div>
+        <div class="form_group">
+            <label for="{{form.description.id_for_label}}">tasvir et</label>
+            {{form.description}}
+        </div>
+        <button class="btn">Add</button>
+    </form>
+{% endblock %}

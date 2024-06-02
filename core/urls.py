@@ -15,11 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
-from cars.views import car_page,about_page,contact_page,my_car_page
+from cars.views import car_page,about_page,contact_page,my_car_page,add_car,car_detail
 
 urlpatterns = [
     path('', car_page,name="home"),
+    path('addcar', add_car,name="add"),
     path('mycar', my_car_page,name="mycar"),
+    path('cardetail/<int:id>', car_detail,name="cardetail"),
     path('about', about_page,name="about"),
     path('contact', contact_page,name="contact"),
     path('account/', include("account.urls")),

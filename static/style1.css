@@ -87,6 +87,7 @@ body{
     margin-top: 10px;
     font-size: 25px;
     border-radius: 15px;
+    cursor:pointer;
 }
 .navbar_logo img{
     width: 100px;

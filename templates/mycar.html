@@ -3,6 +3,27 @@
 {% block body %}
 
 
+{% if messages %}
+
+{% for message in messages %}
+
+{% if message.tags == "warning" %}
+<div id="message" class="alert_warning">
+   <span>   {{message}} </span>
+</div>
+{% else %}
+<div id="message" class="alert_success">
+   <span>{{message}}</span> 
+</div>
+{% endif %}
+    
+{% endfor %}
+    
+{% endif %}
+
+
+
+
 
 <h1>Menim masinlarim</h1>
 {% for car in cars %}
@@ -13,5 +34,7 @@
      <p>{{car.description}}</p>
  </div>
 {% endfor %}
+<a href="{% url 'add' %}"><button class="btn">Yeni Masin elave et</button></a>
+
     
 {% endblock %}
