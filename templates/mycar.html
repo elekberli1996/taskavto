@@ -31,7 +31,9 @@
 
      <h3>{{car.marka}}</h3>
      <h4>{{car.model}}</h4>
-     <p>{{car.description}}</p>
+     <p>{{car.description|safe}}</p>
+     <a href="{% url 'update' car.id %}">guncelle</a>
+     <a href="{% url 'delete' car.id %}">delete</a>
  </div>
 {% endfor %}
 <a href="{% url 'add' %}"><button class="btn">Yeni Masin elave et</button></a>

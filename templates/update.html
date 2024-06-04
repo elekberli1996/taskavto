@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+   <h1>Update car</h1> 
+    <form method="post">
+        {% csrf_token %}
+        {{form.media}}
+      
+        <div class="form_group">
+            <label for="{{form.marka.id_for_label}}">Marka adi</label>
+            {{form.marka}}
+        </div>
+        <div class="form_group">
+            <label for="{{form.model.id_for_label}}">Model adi</label>
+            {{form.model}}
+        </div>
+        <div class="form_group">
+            <label for="{{form.description.id_for_label}}">tasvir et</label>
+            {{form.description}}
+        </div>
+        <div class="form_group">
+            <label for="{{form.photo.id_for_label}}">Sekil yukle</label>
+            {{form.photo}}
+        </div>
+
+        <button class="btn">Update</button>
+    </form>
+{% endblock %}

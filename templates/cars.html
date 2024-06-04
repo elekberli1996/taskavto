@@ -22,15 +22,42 @@
 
 
    <h1>Arabalar</h1>
+   <div class="search_form">
+      <form action="">
+         {% csrf_token %}
+         <input name="marka" type="text" placeholder="marka ...">
+         <input name="model" type="text" placeholder="model ...">
+
+         <button type="submit">axtar</button>
+      </form>
+   </div>
+
+
+
+   {% if cars %}
    {% for car in cars %}
     <div>
 
         <h3>{{car.marka}}</h3>
         <h4>{{car.model}}</h4>
-        <p>{{car.description| truncatechars:10 }}</p>
+        <p>{{car.description|safe |truncatechars:10 }}</p>
+        {% if car.photo %}
+        <img src="{{car.photo.url}}" alt="">
+      
+        {% endif %}
+       
+      
+        
         <a href="{% url 'cardetail' car.id %}"><button>Detail</button></a>
     </div>
    {% endfor %}
+      
+   {% else %}
+   <p> Elan yoxdur</p>
+      
+   {% endif %}
+
+   
 
 
 {% endblock %}

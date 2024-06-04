@@ -1,13 +1,67 @@
 {% extends 'base.html' %}
 
 {% block body %}
+
+{% if messages %}
+
+{% for message in messages %}
+
+{% if message.tags == "warning" %}
+<div id="message" class="alert_warning">
+   <span>   {{message}} </span>
+</div>
+{% else %}
+<div id="message" class="alert_success">
+   <span>{{message}}</span> 
+</div>
+{% endif %}
+    
+{% endfor %}
+    
+{% endif %}
+
     Detail
    
     <div>
 
         <h3>{{car.marka}}</h3>
         <h4>{{car.model}}</h4>
-        <p>{{car.description}}</p>
+        <p>{{car.description|safe}}</p>
+        {% if car.photo %}
+        <img src="{{car.photo.url}}" alt="">
+      
+        {% endif %}
+       
+       
+        
     </div>
+
+    <div class="cooments">
+        <h3>sehrler</h3>
+        {% if comments %}
+        {% for comment in comments %}
+            <p>{{comment.author}} {{comment.comment_content|safe}} commentini {{comment.added_date}} de paylasdi</p>
+        <hr>
+            {% endfor %}
+       
+            
+        {% else %}
+        <p>sehr yoxdur</p>
+        {% endif %}
+    </div>
+
+    <div class="comment_form">
+        <form action="{% url 'comment' car.id %}" method="post">
+
+            {% csrf_token %}
+
+            <div class="form_group">
+               <textarea type="text" rows="10" cols="50" name="comment_content" placeholder="Sehriniz"></textarea>
+            </div>
+
+        <button type="submit">paylas</button>    
+        </form>
+    </div>
+    
  
 {% endblock %}
